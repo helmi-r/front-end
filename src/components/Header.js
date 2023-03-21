@@ -7,7 +7,7 @@ const Header = () => {
             <nav className="navbar navbar-light mt-2" style={{backgroundColor: '#e3f2fd'}}>
                 <div className="container-fluid">
                     <Link class="navbar-brand logo" to="/">
-                        <img src="/img/rsbh.jpg" alt width={40} height={40} className="d-inline-block align-text-top" />
+                        <img src="/img/rsbh.jpg" alt="" width={40} height={40} className="d-inline-block align-text-top" />
                         <strong>  BHAKTI HUSADA II PURWAKARTA</strong>
                     </Link>
                     
