@@ -37,16 +37,13 @@ const MainMenu = () => {
                         <h2 className="text-center mb-5">MOHON PENILAIAN ANDA TERHADAP LAYANAN KAMI</h2>
                         <div className="col-lg-1"></div>
                         <div className="col">
-                            <ModalInput img src="/img/sangat-puas.jpg" style={puasStyle}/>
-                            {/* <img src="/img/sangat-puas.jpg" alt="" style={puasStyle} className="btn btn-primary"/> */}
+                            <ModalInput imgUrl={'/img/sangat-puas.jpg'} style={puasStyle} />
                         </div>
                         <div className="col">
-                        <ModalInput img src="/img/puas.jpg" alt="" style={biasaStyle}/>
-                            {/* <img src="/img/puas.jpg" alt="" style={biasaStyle} /> */}
+                            <ModalInput imgUrl={'/img/puas.jpg'} style={biasaStyle} />
                         </div>
                         <div className="col">
-                        <ModalInput img src="/img/tidak-puas.jpg" alt="" style={tidakStyle}/>
-                            {/* <img src="/img/tidak-puas.jpg" alt="" style={tidakStyle} /> */}
+                            <ModalInput imgUrl={'/img/tidak-puas.jpg'} style={tidakStyle} />
                         </div>
                     </div>
                 </div>
@@ -65,42 +62,56 @@ class ModalInput extends React.Component {
         this.handleClose = this.handleClose.bind(this);
         this.handleShow = this.handleShow.bind(this);
     }
-    
-handleClose () {
-    this.setState({
-        show: false
-    })
-}
 
-handleShow (){
-    this.setState({
-        show: true
-    })
-}
+    handleClose() {
+        this.setState({
+            show: false
+        })
+    }
+
+    handleShow() {
+        this.setState({
+            show: true
+        })
+    }
 
     render() {
+        const { imgUrl } = this.props;
         return (
             <>
-            <img src={this.props.img} alt="" style={this.props.style} onClick={this.handleShow}>
-            </img>
+                <img src={imgUrl} alt="" style={this.props.style} onClick={this.handleShow}>
+                </img>
 
-            <Modal show={this.state.show} onHide={this.handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={this.handleClose}>
-                        Close
-                    </Button>
-                    <Button variant="primary" onClick={this.handleClose}>
-                        Save Changes
-                    </Button>
-                </Modal.Footer>
-            </Modal>
-        </>
-    )
-}
+                <Modal show={this.state.show} onHide={this.handleClose}>
+                    <Modal.Header closeButton>
+                    <Modal.Title>Isi form dibawah ini</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <form>
+                            <div className="form-group mb-3">
+                                <label htmlFor="exampleInputEmail1 mb-2">Nama</label>
+                                <input type="text" className="form-control" placeholder="isikan nama" />
+                            </div>
+                            <div className="form-group mb-3">
+                                <label htmlFor="exampleInputEmail1 mb-2">HP/Telp</label>
+                                <input type="text" className="form-control" placeholder="isikan no.HP/Telp" />
+                            </div>
+                            <button type="submit" className="btn btn-primary">Simpan</button>
+                        </form>
+
+                    </Modal.Body>
+                    {/* <Modal.Footer>
+                        <Button variant="secondary" onClick={this.handleClose}>
+                            Batal
+                        </Button>
+                        <Button variant="primary" onClick={this.handleClose}>
+                            Simpan
+                        </Button>
+                    </Modal.Footer> */}
+                </Modal>
+            </>
+        )
+    }
 
 }
 
